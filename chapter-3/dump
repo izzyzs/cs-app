@@ -1,0 +1,113 @@
+
+switch_eg.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <switch_eg>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	48 83 ee 64          	sub    $0x64,%rsi
+   8:	48 83 fe 06          	cmp    $0x6,%rsi
+   c:	77 2d                	ja     3b <switch_eg+0x3b>
+   e:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 15 <switch_eg+0x15>
+  15:	48 63 04 b1          	movslq (%rcx,%rsi,4),%rax
+  19:	48 01 c8             	add    %rcx,%rax
+  1c:	3e ff e0             	notrack jmp *%rax
+  1f:	48 8d 04 7f          	lea    (%rdi,%rdi,2),%rax
+  23:	48 8d 3c 87          	lea    (%rdi,%rax,4),%rdi
+  27:	eb 08                	jmp    31 <switch_eg+0x31>
+  29:	48 83 c7 0a          	add    $0xa,%rdi
+  2d:	48 83 c7 0b          	add    $0xb,%rdi
+  31:	48 89 3a             	mov    %rdi,(%rdx)
+  34:	c3                   	ret    
+  35:	48 0f af ff          	imul   %rdi,%rdi
+  39:	eb f6                	jmp    31 <switch_eg+0x31>
+  3b:	bf 00 00 00 00       	mov    $0x0,%edi
+  40:	eb ef                	jmp    31 <switch_eg+0x31>
+
+0000000000000042 <get_status_message>:
+  42:	f3 0f 1e fa          	endbr64 
+  46:	66 81 ef c8 00       	sub    $0xc8,%di
+  4b:	66 83 ff 04          	cmp    $0x4,%di
+  4f:	77 49                	ja     9a <get_status_message+0x58>
+  51:	0f b7 ff             	movzwl %di,%edi
+  54:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 5b <get_status_message+0x19>
+  5b:	48 63 04 ba          	movslq (%rdx,%rdi,4),%rax
+  5f:	48 01 d0             	add    %rdx,%rax
+  62:	3e ff e0             	notrack jmp *%rax
+  65:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 6c <get_status_message+0x2a>
+  6c:	48 89 06             	mov    %rax,(%rsi)
+  6f:	c3                   	ret    
+  70:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 77 <get_status_message+0x35>
+  77:	48 89 06             	mov    %rax,(%rsi)
+  7a:	c3                   	ret    
+  7b:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 82 <get_status_message+0x40>
+  82:	48 89 06             	mov    %rax,(%rsi)
+  85:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 8c <get_status_message+0x4a>
+  8c:	48 89 06             	mov    %rax,(%rsi)
+  8f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 96 <get_status_message+0x54>
+  96:	48 89 06             	mov    %rax,(%rsi)
+  99:	c3                   	ret    
+  9a:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # a1 <get_status_message+0x5f>
+  a1:	48 89 06             	mov    %rax,(%rsi)
+  a4:	c3                   	ret    
+
+00000000000000a5 <get_status_code>:
+  a5:	f3 0f 1e fa          	endbr64 
+  a9:	83 ff 01             	cmp    $0x1,%edi
+  ac:	74 25                	je     d3 <get_status_code+0x2e>
+  ae:	77 0d                	ja     bd <get_status_code+0x18>
+  b0:	85 ff                	test   %edi,%edi
+  b2:	75 26                	jne    da <get_status_code+0x35>
+  b4:	b8 c8 00 00 00       	mov    $0xc8,%eax
+  b9:	66 89 06             	mov    %ax,(%rsi)
+  bc:	c3                   	ret    
+  bd:	83 ef 02             	sub    $0x2,%edi
+  c0:	83 ff 02             	cmp    $0x2,%edi
+  c3:	77 07                	ja     cc <get_status_code+0x27>
+  c5:	b8 cc 00 00 00       	mov    $0xcc,%eax
+  ca:	eb ed                	jmp    b9 <get_status_code+0x14>
+  cc:	b8 90 01 00 00       	mov    $0x190,%eax
+  d1:	eb e6                	jmp    b9 <get_status_code+0x14>
+  d3:	b8 c9 00 00 00       	mov    $0xc9,%eax
+  d8:	eb df                	jmp    b9 <get_status_code+0x14>
+  da:	b8 90 01 00 00       	mov    $0x190,%eax
+  df:	eb d8                	jmp    b9 <get_status_code+0x14>
+
+00000000000000e1 <main>:
+  e1:	f3 0f 1e fa          	endbr64 
+  e5:	48 83 ec 28          	sub    $0x28,%rsp
+  e9:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  f0:	00 00 
+  f2:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+  f7:	31 c0                	xor    %eax,%eax
+  f9:	48 8d 54 24 08       	lea    0x8(%rsp),%rdx
+  fe:	be 6a 00 00 00       	mov    $0x6a,%esi
+ 103:	bf 04 00 00 00       	mov    $0x4,%edi
+ 108:	e8 00 00 00 00       	call   10d <main+0x2c>
+ 10d:	48 8d 74 24 06       	lea    0x6(%rsp),%rsi
+ 112:	bf 00 00 00 00       	mov    $0x0,%edi
+ 117:	e8 00 00 00 00       	call   11c <main+0x3b>
+ 11c:	48 8d 74 24 10       	lea    0x10(%rsp),%rsi
+ 121:	0f bf 7c 24 06       	movswl 0x6(%rsp),%edi
+ 126:	e8 00 00 00 00       	call   12b <main+0x4a>
+ 12b:	48 8b 7c 24 10       	mov    0x10(%rsp),%rdi
+ 130:	e8 00 00 00 00       	call   135 <main+0x54>
+ 135:	0f bf 54 24 06       	movswl 0x6(%rsp),%edx
+ 13a:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 141 <main+0x60>
+ 141:	bf 01 00 00 00       	mov    $0x1,%edi
+ 146:	b8 00 00 00 00       	mov    $0x0,%eax
+ 14b:	e8 00 00 00 00       	call   150 <main+0x6f>
+ 150:	48 8b 54 24 08       	mov    0x8(%rsp),%rdx
+ 155:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 15c <main+0x7b>
+ 15c:	bf 01 00 00 00       	mov    $0x1,%edi
+ 161:	b8 00 00 00 00       	mov    $0x0,%eax
+ 166:	e8 00 00 00 00       	call   16b <main+0x8a>
+ 16b:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+ 170:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 177:	00 00 
+ 179:	75 0a                	jne    185 <main+0xa4>
+ 17b:	b8 00 00 00 00       	mov    $0x0,%eax
+ 180:	48 83 c4 28          	add    $0x28,%rsp
+ 184:	c3                   	ret    
+ 185:	e8 00 00 00 00       	call   18a <main+0xa9>

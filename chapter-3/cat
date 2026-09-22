@@ -1,0 +1,9 @@
+switch_eg.c: In function 'main':
+switch_eg.c:79:33: warning: passing argument 2 of 'get_status_message' from incompatible pointer type [-Wincompatible-pointer-types]
+   79 |     get_status_message(*code_p, http_message_p);
+      |                                 ^~~~~~~~~~~~~~
+      |                                 |
+      |                                 char **
+switch_eg.c:31:52: note: expected 'const char **' but argument is of type 'char **'
+   31 | void get_status_message(short status, const char** http_message_p) {
+      |                                       ~~~~~~~~~~~~~^~~~~~~~~~~~~~
